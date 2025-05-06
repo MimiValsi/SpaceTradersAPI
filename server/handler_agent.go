@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"encoding/json"
@@ -6,6 +6,8 @@ import (
 	"io"
 	"log"
 	"net/http"
+
+	"github.com/MimiValsi/SpaceTradersAPI/client"
 )
 
 type Agent struct {
@@ -17,13 +19,15 @@ type Agent struct {
 		StartingFaction string `json:"startingFaction,omitempty"`
 		ShipCount       int64  `json:"shipCount,omitempty"`
 	} `json:"data,omitempty"`
+
+	Token string `json:"-"`
 }
 
 // call clientData function to fetch information about the agent
-func (c *apiCfg) handlerAgent(w http.ResponseWriter, r *http.Request) {
+func (agent *Agent) HandlerAgent(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json")
 
-	resp, err := clientData(c.token)
+	resp, err := client.FetchClientData(agent.Token)
 	if err != nil {
 		log.Println(err)
 		return
@@ -36,7 +40,7 @@ func (c *apiCfg) handlerAgent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	decoder := json.NewDecoder(resp.Body)
-	agent := &Agent{}
+	// agent := &Agent{}
 	decoder.Decode(agent)
 
 	fmt.Printf("agent: %+v\n", agent)
