@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/MimiValsi/SpaceTradersAPI/server"
 	"github.com/joho/godotenv"
 )
 
@@ -14,6 +15,7 @@ const (
 
 type apiCfg struct {
 	token string
+	agent server.Agent
 }
 
 func main() {
@@ -27,6 +29,7 @@ func main() {
 	c := apiCfg{
 		token: jwt,
 	}
+	c.agent.Token = jwt
 
 	server := &http.Server{
 		Addr:    addr,
