@@ -34,13 +34,13 @@ func (agent *Agent) HandlerAgent(w http.ResponseWriter, r *http.Request) {
 	}
 	defer resp.Body.Close()
 
+	// tmpWrite := resp.Body
 	b, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Println(err)
 	}
 
 	decoder := json.NewDecoder(resp.Body)
-	// agent := &Agent{}
 	decoder.Decode(agent)
 
 	fmt.Printf("agent: %+v\n", agent)

@@ -15,7 +15,7 @@ const (
 
 type apiCfg struct {
 	token string
-	agent server.Agent
+	agent *server.Agent
 }
 
 func main() {
@@ -28,6 +28,7 @@ func main() {
 
 	c := apiCfg{
 		token: jwt,
+		agent: new(server.Agent),
 	}
 	c.agent.Token = jwt
 
