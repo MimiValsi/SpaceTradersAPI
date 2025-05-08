@@ -10,12 +10,12 @@ import (
 type Agent struct {
 	Data struct {
 		AccountID       string `json:"accountId,omitempty"`
-		Symbol          string `json:"symbol,omitempty"`
-		Headquarters    string `json:"headquarters,omitempty"`
-		Credits         int64  `json:"credits,omitempty"`
-		StartingFaction string `json:"startingFaction,omitempty"`
-		ShipCount       int64  `json:"shipCount,omitempty"`
-	} `json:"data,omitempty"`
+		Symbol          string `json:"symbol"`
+		Headquarters    string `json:"headquarters"`
+		Credits         int64  `json:"credits"`
+		StartingFaction string `json:"startingFaction"`
+		ShipCount       int64  `json:"shipCount"`
+	} `json:"data"`
 }
 
 // call clientData function to fetch information about the agent
@@ -28,7 +28,7 @@ func (app *application) handlerFetchAgentData(w http.ResponseWriter, r *http.Req
 	defer resp.Body.Close()
 
 	decoder := json.NewDecoder(resp.Body)
-	err = decoder.Decode(app.agent)
+	err = decoder.Decode(&app.agent)
 	if err != nil {
 		log.Printf("json agent decoder: %s\n", err)
 		return
