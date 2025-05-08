@@ -14,8 +14,8 @@ const (
 
 type application struct {
 	token    string
-	agent    *Agent
-	location *Location
+	agent    Agent
+	location Waypoint
 }
 
 func main() {
@@ -28,8 +28,8 @@ func main() {
 
 	app := application{
 		token:    jwt,
-		agent:    new(Agent),
-		location: new(Location),
+		agent:    Agent{},
+		location: Waypoint{},
 	}
 
 	server := &http.Server{
