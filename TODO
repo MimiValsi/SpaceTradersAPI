@@ -1,4 +1,4 @@
-- handlerAgent:
-  - Create struct to hold agent info
-
+- For each handler create it's own struct?
 - Create a better error log handling inside handlers funcs
+- Enum outside or inside DB???
+- maybe create agents/locations tables? For the future...
