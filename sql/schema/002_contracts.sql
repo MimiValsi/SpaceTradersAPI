@@ -14,7 +14,7 @@ CREATE TYPE deliver_t AS (
 CREATE TYPE terms_t AS (
   deadline TIMESTAMP,
   payments payments_t,
-  deliver deliver_t
+  deliver deliver_t[]
 );
 
 CREATE TABLE contracts (
