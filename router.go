@@ -4,11 +4,12 @@ import (
 	"net/http"
 )
 
-func (c *apiCfg) routes() http.Handler {
+func (app *application) routes() http.Handler {
 	mux := http.NewServeMux()
 
 	mux.Handle("/app/", http.StripPrefix("/app", http.FileServer(http.Dir("."))))
-	mux.HandleFunc("GET /agent/data", c.agent.HandlerAgent)
+	mux.HandleFunc("GET /agent", app.handlerFetchAgentData)
+	mux.HandleFunc("GET /location", app.handlerSpaceshipLocation)
 
 	return mux
 }
