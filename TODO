@@ -1,2 +1,4 @@
 - handlerAgent:
   - Create struct to hold agent info
+
+- Create a better error log handling inside handlers funcs
