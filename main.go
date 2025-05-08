@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/MimiValsi/SpaceTradersAPI/server"
 	"github.com/joho/godotenv"
 )
 
@@ -13,9 +12,10 @@ const (
 	addr = ":3000"
 )
 
-type apiCfg struct {
-	token string
-	agent *server.Agent
+type application struct {
+	token    string
+	agent    *Agent
+	location *Location
 }
 
 func main() {
@@ -26,15 +26,15 @@ func main() {
 		log.Fatalln("Must set JWT")
 	}
 
-	c := apiCfg{
-		token: jwt,
-		agent: new(server.Agent),
+	app := application{
+		token:    jwt,
+		agent:    new(Agent),
+		location: new(Location),
 	}
-	c.agent.Token = jwt
 
 	server := &http.Server{
 		Addr:    addr,
-		Handler: c.routes(),
+		Handler: app.routes(),
 	}
 
 	log.Printf("Starting server on %s\n", addr)
