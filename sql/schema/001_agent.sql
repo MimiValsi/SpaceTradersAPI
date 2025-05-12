@@ -1,11 +1,11 @@
 -- +goose Up
 CREATE TABLE agent (
-  accountID TEXT NOT NULL PRIMARY KEY,
-  symbol VARCHAR(14) NOT NULL,
+  account_id TEXT NOT NULL PRIMARY KEY,
+  symbol TEXT NOT NULL,
   headquarters TEXT NOT NULL,
   credits BIGINT NOT NULL,
-  startingFaction TEXT NOT NULL,
-  shipCount INTEGER NOT NULL
+  starting_faction TEXT NOT NULL,
+  ship_count INTEGER NOT NULL
 );
 --
 

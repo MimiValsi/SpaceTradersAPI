@@ -1,36 +1,39 @@
 -- +goose Up
-CREATE TYPE payments_t AS (
-  on_accepted INTEGER,
-  on_fulfilled INTEGER
+CREATE TABLE payment (
+  id SERIAL PRIMARY KEY,
+  onAccept INTEGER NOT NULL,
+  onFulfilled INTEGER NOT NULL
 );
 
-CREATE TYPE deliver_t AS (
-  trade_symbol TEXT,
-  destination_symbol TEXT,
-  units_required INTEGER,
-  units_fulfilled INTEGER
+CREATE TABLE deliver (
+  id SERIAL PRIMARY KEY,
+  trade_symbol TEXT NOT NULL,
+  destination_symbol TEXT NOT NULL,
+  units_required INTEGER NOT NULL,
+  units_fulfilled INTEGER NOT NULL
 );
 
-CREATE TYPE terms_t AS (
-  deadline TIMESTAMP,
-  payments payments_t,
-  deliver deliver_t[]
+CREATE TABLE terms (
+  id SERIAL PRIMARY KEY,
+  deadline TIMESTAMPTZ NOT NULL,
+  payment_id INTEGER REFERENCES payment(id) ON DELETE CASCADE NOT NULL,
+  deliver_id INTEGER REFERENCES deliver(id) ON DELETE CASCADE NOT NULL
 );
 
-CREATE TABLE contracts (
-  id TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE contract (
+  id TEXT PRIMARY KEY,
   factionSymbol TEXT NOT NULL,
   type TEXT NOT NULL,
-  terms terms_t NOT NULL,
+  terms_id INTEGER REFERENCES terms(id) ON DELETE CASCADE NOT NULL,
   accepted BOOLEAN NOT NULL DEFAULT false,
   fulfilled BOOLEAN NOT NULL DEFAULT false,
-  deadline_to_accept TIMESTAMP NOT NULL
+  deadline_to_accept TIMESTAMPTZ NOT NULL
 );
 --
 
 -- +goose Down
-DROP TABLE contracts;
-DROP TYPE terms_t;
-DROP TYPE deliver_t;
-DROP TYPE payments_t;
+DROP TABLE contract;
+DROP TABLE terms;
+DROP TABLE deliver;
+DROP TABLE payment;
 --
