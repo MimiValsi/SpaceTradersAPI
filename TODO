@@ -1,3 +1,4 @@
+- Check for reset date, and reload DB?
 - For each handler create it's own struct?
 - Create a better error log handling inside handlers funcs
 - Enum outside or inside DB???

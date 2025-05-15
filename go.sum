@@ -1,3 +1,5 @@
+github.com/MimiValsi/go-service v0.0.0-20250514200016-af6590888fd7 h1:+TxTXA5Zs0OXr77WSlItQevRCcUYyGFtne58zp+TSNU=
+github.com/MimiValsi/go-service v0.0.0-20250514200016-af6590888fd7/go.mod h1:YDWJQk1uU0rPOws25UKv9gzyG6WLYHS2ONb085Xem38=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

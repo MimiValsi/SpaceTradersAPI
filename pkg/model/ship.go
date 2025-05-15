@@ -3,6 +3,21 @@ package model
 import "time"
 
 type Ship struct {
+	Symbol       string        `json:"symbol"`
+	Registration *Registration `json:"registration"`
+	Nav          *Nav          `json:"nav"`
+	Crew         *Crew         `json:"crew"`
+	Frame        *Frame        `json:"frame"`
+	Reactor      *Reactor      `json:"reactor"`
+	Engine       *Engine       `json:"engine"`
+	Cooldown     *Cooldown     `json:"cooldown"`
+	Modules      []Modules     `json:"modules"`
+	Mounts       []Mounts      `json:"mounts"`
+	Cargo        *Cargo        `json:"cargo"`
+	Fuel         *Fuel         `json:"fuel"`
+}
+
+type ShipData struct {
 	Data struct {
 		Symbol       string        `json:"symbol"`
 		Registration *Registration `json:"registration"`

@@ -1,6 +1,6 @@
 package model
 
-type Faction struct {
+type FactionData struct {
 	Data struct {
 		Symbol       string   `json:"symbol"`
 		Name         string   `json:"name"`
@@ -9,6 +9,15 @@ type Faction struct {
 		Traits       []Traits `json:"traits"`
 		IsRecruiting bool     `json:"isRecruiting"`
 	} `json:"data"`
+}
+
+type Faction struct {
+	Symbol       string   `json:"symbol"`
+	Name         string   `json:"name"`
+	Description  string   `json:"description"`
+	Headquarters string   `json:"headquartes"`
+	Traits       []Traits `json:"traits"`
+	IsRecruiting bool     `json:"isRecruiting"`
 }
 
 type Traits struct {

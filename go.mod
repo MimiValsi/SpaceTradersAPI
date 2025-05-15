@@ -3,6 +3,7 @@ module github.com/MimiValsi/SpaceTradersAPI
 go 1.23.2
 
 require (
+	github.com/MimiValsi/go-service v0.0.0-20250514200016-af6590888fd7
 	github.com/jackc/pgx/v5 v5.7.4
 	github.com/joho/godotenv v1.5.1
 )

@@ -3,6 +3,16 @@ package model
 import "time"
 
 type Contract struct {
+	Id               string    `json:"id"`
+	FactionSymbol    string    `json:"factionSymbol"`
+	Type             string    `json:"type"`
+	Terms            *Terms    `json:"terms"`
+	Accepted         bool      `json:"accepted"`
+	Fulfilled        bool      `json:"fulfilled"`
+	DeadlineToAccept time.Time `json:"deadlineToAccept"`
+}
+
+type ContractData struct {
 	Data struct {
 		Id               string    `json:"id"`
 		FactionSymbol    string    `json:"factionSymbol"`

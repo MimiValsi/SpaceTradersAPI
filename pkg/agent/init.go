@@ -1,6 +1,6 @@
 package agent
 
-func (a *Agent) init() error {
-	 
+func (a *Agent) Init() error {
+
 	return nil
 }

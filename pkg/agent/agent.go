@@ -11,7 +11,7 @@ import (
 
 type Agent struct {
 	Token string
-	db    *database.DB
+	Db    *database.DB
 }
 
 // The client side of this app will be written here.
